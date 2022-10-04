@@ -16,7 +16,7 @@ help:
 GRADING_FILES = grading.rsync-filter.txt
 
 grade: SUBMISSION_DIR?=${PWD}
-grade: GRADER_IMAGE=wethinkcode/grader-java-selenium
+grade: GRADER_IMAGE=wethinkcode/weshare-js
 grade: GRADE_CMD=mvn test
 grade:
 	@echo +++ Copying protected/grading files over student submission dir: $(SUBMISSION_DIR)

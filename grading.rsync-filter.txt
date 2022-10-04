@@ -7,8 +7,9 @@
 
 ; files to copy:
 
-+ /src/test/java/**/spa
-
++ /src/test/java/**/webtests
++ /src/test/java/**/api
++ /src/test/java/**/persistence
 
 ; exclude everything else by default:
 - /*
