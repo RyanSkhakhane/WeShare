@@ -23,7 +23,9 @@ function lookupEmail() {
                                       }
 
 
-                                    });
+                                    const template = document.getElementById('expenses-template').innerText;
+                                    const compiledFunction = Handlebars.compile(template);
+                                    document.getElementById('results').innerHTML = compiledFunction(data);   });
        })
 
 
@@ -41,7 +43,7 @@ window.addEventListener('load', () => {
   const app = $('#app');
 
   const defaultTemplate = Handlebars.compile($('#default-template').html());
-
+  const expensesTemplate = Handlebars.compile($('#expenses-template').html());
 
 
 
@@ -54,13 +56,24 @@ window.addEventListener('load', () => {
     }
   });
 
+  router.add('/expenses', async () => {
+    html = expensesTemplate();
+    app.html(html);
 
+
+  });
 
 
 
   router.addUriListener();
 
+  $('form').on('submit', (event) => {
+    event.preventDefault();
+    const path = "/#expenses";
+    router.navigateTo(path);
+  });
 
   router.navigateTo('/');
 });
+
 
