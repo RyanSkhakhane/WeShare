@@ -18,7 +18,9 @@ function lookupEmail() {
                                       .then(response => response.json())
 
                                       .then(data => { data = {
-                                        email: data.email
+                                        email: data.email,
+                                        name:data.email.split("@").at(0)
+
 
                                       }
 
@@ -47,6 +49,7 @@ window.addEventListener('load', () => {
 
 
 
+
   const router = new Router({
     mode:'hash',
     root:'index.html',
@@ -59,9 +62,9 @@ window.addEventListener('load', () => {
   router.add('/expenses', async () => {
     html = expensesTemplate();
     app.html(html);
-
-
   });
+
+
 
 
 

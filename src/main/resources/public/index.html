@@ -34,13 +34,18 @@
     <div id="results">
 
         <p id="email">{{email}}</p>
-        <a href="#expenses">Payment Request Sent</a>
+        <a  id="expenses" href="#expenses">Expenses</a>
+        <a  id="paymentrequests_sent" href="#paymentrequests_sent">Payment Request Sent</a>
         <a href="#">Payment Request Received</a>
-        <a href="#">Expenses</a>
-        <a href="#">Logout</a>
+        <a href="#">Logout {{name}}</a>
         <h1>My Expenses</h1>
     </div>
 
+</script>
+
+<script id="paymentrequests_sent-template-template" type="text/handlebars-template">
+
+<h2>no body owes you anything!</h2>
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
