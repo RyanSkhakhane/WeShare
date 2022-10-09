@@ -49,7 +49,22 @@
 <div id="payment-sent-content">
     <h1>People that owes me</h1>
     {{#if amount}}
-    <h2>someone owes you something!</h2>
+    <table>
+        <tr>
+            <th>Who</th>
+            <th>What</th>
+            <th>Due in</th>
+            <th>How much</th>
+        </tr>
+        <tr >
+
+            <td>{{toPersonId}}</td>
+            <td>{{expenseId}}</td>
+            <td>{{date}}</td>
+            <td>{{amount}}</td>
+        </tr>
+    </table>
+
     {{else}}
     <p>Nobody owes you anything!</p>
     {{/if}}
