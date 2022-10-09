@@ -43,9 +43,20 @@
 
 </script>
 
-<script id="paymentrequests_sent-template-template" type="text/handlebars-template">
 
-<h2>no body owes you anything!</h2>
+
+<script id="paymentrequests_sent-template" type="text/handlebars-template">
+<div id="payment-sent-content">
+    <h1>People that owes me</h1>
+    {{#if amount}}
+    <h2>someone owes you something!</h2>
+    {{else}}
+    <p>Nobody owes you anything!</p>
+    {{/if}}
+
+
+</div>
+
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
