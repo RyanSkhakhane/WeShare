@@ -27,7 +27,7 @@ function lookupEmail() {
 
                                     const template = document.getElementById('expenses-template').innerText;
                                     const compiledFunction = Handlebars.compile(template);
-                                    document.getElementById('results').innerHTML = compiledFunction(data);   });
+                                    document.getElementById('app').innerHTML = compiledFunction(data);   });
        })
 
 
@@ -55,11 +55,12 @@ const options = {
         amount:data[0].amount,
         paid:data[0].paid
 
+
         }
         console.log(data);
           const template = document.getElementById('paymentrequests_sent-template').innerText;
           const compiledFunction = Handlebars.compile(template);
-          document.getElementById('payment-sent-content').innerHTML =compiledFunction(data);
+          document.getElementById('results').innerHTML =compiledFunction(data);
 
         })
 
@@ -95,8 +96,8 @@ window.addEventListener('load', () => {
 
 
   router.add('/paymentrequests_sent', async () => {
-    html = paymentrequests_sentTemplate();
-    app.html(html);
+//    html = paymentrequests_sentTemplate();
+//    app.html(html);
     paymentrequests_sent();
   });
 
