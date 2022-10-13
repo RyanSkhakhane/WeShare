@@ -17,14 +17,18 @@ function lookupEmail() {
                     fetch("http://localhost:5050/people", options)
                                       .then(response => response.json())
 
-                                      .then(data => { data = {
+                                      .then(data => {
+                                      console.log(data);
+                                       data = {
                                         email: data.email,
-                                        name:data.email.split("@").at(0)
+                                        name:data.email.split("@").at(0),
+                                        Id : data.id
 
 
                                       }
 
-
+                                    localStorage.setItem("personId",data.Id);
+                                    console.log(data.Id);
                                     const template = document.getElementById('expenses-template').innerText;
                                     const compiledFunction = Handlebars.compile(template);
                                     document.getElementById('app').innerHTML = compiledFunction(data);   });
@@ -38,14 +42,19 @@ function lookupEmail() {
 lookupEmail();
 
 function paymentrequests_sent(){
+var personId=localStorage.getItem('personId');
 
 const options = {
         method: 'GET',
     };
 
-        fetch(`http://localhost:5050/paymentrequests/sent/1`, options)
+        fetch(`http://localhost:5050/paymentrequests/sent/${personId}`, options)
+
+
         .then(response => response.json())
         .then(data => {
+        console.log(personId)
+        console.log(data)
         data = {
         id: data[0].id,
         expenseId:data[0].expenseId,
@@ -57,14 +66,13 @@ const options = {
 
 
         }
-        console.log(data);
+
+ 
           const template = document.getElementById('paymentrequests_sent-template').innerText;
           const compiledFunction = Handlebars.compile(template);
           document.getElementById('results').innerHTML =compiledFunction(data);
 
         })
-
-
 
 }
 
