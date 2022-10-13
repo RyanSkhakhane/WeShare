@@ -66,8 +66,8 @@ public class PersonApiTests extends ApiTestRunner {
         Person person = scenario.somePerson();
         dto.setEmail(person.getEmail());
         HttpResponse<JsonNode> response = Unirest.post("/people")
-                .body(dto)
-                .asJson();
+            .body(dto)
+            .asJson();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody().getObject().getInt("id")).isEqualTo(person.getId());
     }
