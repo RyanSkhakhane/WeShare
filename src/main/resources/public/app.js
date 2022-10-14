@@ -1,3 +1,35 @@
+function populate_expense_table(){
+  console.log("Hey there buddy");
+
+const options = {
+  method: 'GET',
+  };
+
+  fetch('http://localhost:5050/expenses/person/1',options)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    let total = 0;
+
+    for ( let i = 0; i < data.length; i++ ) {
+      console.log(data[i].nettAmount);
+      total += data[i].nettAmount;
+    }
+
+    data = {
+      expenses: data,
+      grandTotal: total
+    }
+
+    const template = document.getElementById('expenses-template').innerText;
+    const compiledFunction = Handlebars.compile(template);
+    document.getElementById('app').innerHTML =compiledFunction(data);
+  });
+  
+
+}
+
+
 function lookupEmail() {
     const form = document.getElementById("login-form");
 
@@ -100,6 +132,8 @@ window.addEventListener('load', () => {
   router.add('/expenses', async () => {
     html = expensesTemplate();
     app.html(html);
+    populate_expense_table();
+
   });
 
 

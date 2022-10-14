@@ -27,23 +27,48 @@
     </script>
 
 
-
-<script id="expenses-template" type="text/handlebars-template">
-
-
-    <div id="top-layout">
-        <p id="email">{{email}}</p>
-        <a  id="expenses" href="#expenses">Expenses</a>
-        <a  id="paymentrequests_sent" href="#paymentrequests_sent">Payment Request Sent</a>
-        <a href="#">Payment Request Received</a>
-        <a href="#">Logout {{name}}</a>
-    </div>
-
-    <div id="results">
-
-<p>My expenses</p>
-    </div>
-</script>
+    <script id="expenses-template" type="text/handlebars-template">
+        
+    
+        <nav>
+            <a href="#/expense">Expense</a>
+            <a href="#/paymentrequests_sent">Payment Request Sent</a>
+            <a href="#/paymentrequests_received">Payment Request Received </a>
+            <a href="#/logout">Logout</a>
+        </nav>
+    
+        <h2>My Expenses</h2>
+        
+        <a href="#/add_new_expense">Add a new expense</a>
+    
+        <table>
+            <thead>
+                <td>When</td>
+                <td>What</td>
+                <td>Amount Spent</td>
+                <td>Payments Requested</td>
+                <td>Payments Received</td>
+                <td>Net Expenses</td>
+            </thead>
+            <tbody>
+            {{#each expenses}}
+            <tr>
+                <td>{{this.date}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.amount}}</td>
+                <td>{{this.totalPaymentsRequested}}</td>
+                <td>{{this.totalPaymentsReceived}}</td>
+                <td>{{this.nettAmount}}</td>
+            </tr>
+            {{/each}}
+       
+            </tbody>
+            <tfoot>
+                <td colspan=5>Total Expenses</td>
+                <td>{{grandTotal}}</td>
+            </tfoot>
+        </table>
+    </script>
 
 
 
