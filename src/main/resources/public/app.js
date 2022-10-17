@@ -1,3 +1,11 @@
+function add_new_expense(){
+
+}
+
+
+
+
+
 function populate_expense_table(){
   console.log("Hey there buddy");
 
@@ -142,6 +150,12 @@ window.addEventListener('load', () => {
 //    app.html(html);
     paymentrequests_sent();
   });
+
+  router.add('/add_new_expense',async() =>{
+    html = add_new_expenseTempalate();
+    app.html(html);
+    add_new_expense();
+  })
 
 
 
